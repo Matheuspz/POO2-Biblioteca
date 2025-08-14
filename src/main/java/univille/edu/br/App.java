@@ -16,7 +16,7 @@ public class App
 
         UsuarioDAO dao = new UsuarioDAO();
 
-        List<Usuario> list = dao.listarTodos();
+        dao.listarTodos();
 //        for (Usuario usuario : list) {
 //            System.out.println(
 //                "ID: " + usuario.getIdUsuario() + " | Nome: " + usuario.getNome() + " | Email: " + usuario.getEmail()
@@ -24,7 +24,7 @@ public class App
 //        }
         System.out.println(" ");
 
-        Optional<Usuario> opt = dao.listarPorId(4);
+        dao.listarPorId(4);
 //        opt.ifPresent(usuario ->  {
 //            System.out.print("ID: " + usuario.getIdUsuario() + " | ");
 //            System.out.print("Nome: " + usuario.getNome() + " | ");

@@ -95,6 +95,7 @@ public class UsuarioDAO extends BaseDAO implements DAO<Usuario> {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,usuario.getNome());
             ps.setString(2,usuario.getEmail());
+            ps.setLong(3,usuario.getIdUsuario());
             ps.executeUpdate();
             System.out.println("Usuario atualizado com sucesso!");
 
