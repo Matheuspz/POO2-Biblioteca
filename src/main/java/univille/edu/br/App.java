@@ -1,5 +1,11 @@
 package univille.edu.br;
 
+import univille.edu.br.Entidades.Usuario;
+import univille.edu.br.Entidades.UsuarioDAO;
+
+import java.util.Optional;
+import java.util.OptionalInt;
+
 /**
  * Hello world!
  *
@@ -7,12 +13,16 @@ package univille.edu.br;
 public class App 
 {
     public static void main(String[] args) {
-        PessoaDAO dao = new PessoaDAO();
-        var opt = dao.obterPeloId(1);
+
+        UsuarioDAO dao = new UsuarioDAO();
+
+        Optional<Usuario> opt = dao.buscarPorId(3);
         System.out.println(opt);
-        opt = dao.obterPeloId(1000);
-        if(opt.isEmpty()){
-            System.out.println("Nao encontrou a pessoa.");
-        }
+
+//        Usuario usuario = new Usuario();
+//        usuario.setNome("Thiago");
+//        usuario.setEmail("Thiago@gmail.com");
+//        dao.inserir(usuario);
+
     }
 }

@@ -3,16 +3,16 @@ package univille.edu.br.Entidades;
 import java.math.BigInteger;
 
 public class Livro {
-    private BigInteger idLivro;
+    private long idLivro;
     private String titulo;
 
-    public BigInteger getIdLivro() { return idLivro; }
+    public long getIdLivro() { return idLivro; }
 
-    public void setIdLivro(BigInteger idLivro) { this.idLivro = idLivro; }
+    public void setIdLivro(long idLivro) { this.idLivro = idLivro; }
 
     public String getTitulo() { return titulo; }
 
     public void setTitulo(String titulo) { this.titulo = titulo; }
 
-    public Livro(BigInteger idLivro) { this.idLivro = idLivro; }
+    public Livro(long idLivro) { this.idLivro = idLivro; }
 }

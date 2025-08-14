@@ -5,16 +5,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Emprestimo {
-    private BigInteger idEmprestimo;
+    private long idEmprestimo;
     private Usuario idUsuario;
     private Livro idLivro;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataDevolucao;
     private LocalDateTime dataEfetivaDevolucao;
 
-    public BigInteger getIdEmprestimo() { return idEmprestimo; }
+    public long getIdEmprestimo() { return idEmprestimo; }
 
-    public void setIdEmprestimo(BigInteger idEmprestimo) { this.idEmprestimo = idEmprestimo; }
+    public void setIdEmprestimo(long idEmprestimo) { this.idEmprestimo = idEmprestimo; }
 
     public Usuario getIdUsuario() { return idUsuario; }
 
