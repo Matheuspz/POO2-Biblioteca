@@ -23,13 +23,12 @@ public class LivroDAO extends BaseDAO implements DAO<Livro> {
 
             while (rs.next()) {
                 Livro livro = new Livro();
-                livro.setIdLivro(rs.getInt("idLivro"));
-                livro.setTitulo(rs.getString("titulo"));
+                setLivro(livro, rs);
                 livros.add(livro);
             }
             for(Livro livro : livros) {
                 System.out.println(
-                        "Livro ID: " + livro.getIdLivro() + "| Titulo: " + livro.getTitulo()
+                        "Livro ID: " + livro.getIdLivro() + " | Titulo: " + livro.getTitulo()
                 );
             }
 
@@ -50,13 +49,9 @@ public class LivroDAO extends BaseDAO implements DAO<Livro> {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                livro.setIdLivro(rs.getInt("idLivro"));
-                livro.setTitulo(rs.getString("titulo"));
-
-                long idLivro = rs.getLong("idLivro");
-                String titulo = rs.getString("titulo");
+                setLivro(livro, rs);
                 System.out.println(
-                        "Livro ID: " + idLivro + "| Titulo: " + titulo
+                        "Livro ID: " + livro.getIdLivro() + " | Titulo: " + livro.getTitulo()
                 );
 
                 return Optional.of(livro);
@@ -115,5 +110,10 @@ public class LivroDAO extends BaseDAO implements DAO<Livro> {
             System.out.println("Erro ao excluir Livro" + e.getMessage());
         }
 
+    }
+
+    private void setLivro(Livro livro, ResultSet rs) throws SQLException {
+        livro.setIdLivro(rs.getInt("idLivro"));
+        livro.setTitulo(rs.getString("titulo"));
     }
 }

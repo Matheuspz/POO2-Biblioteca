@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 
 public class Emprestimo {
     private long idEmprestimo;
-    private Usuario idUsuario;
-    private Livro idLivro;
+    private long idUsuario;
+    private long idLivro;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataDevolucao;
     private LocalDateTime dataEfetivaDevolucao;
@@ -16,13 +16,13 @@ public class Emprestimo {
 
     public void setIdEmprestimo(long idEmprestimo) { this.idEmprestimo = idEmprestimo; }
 
-    public Usuario getIdUsuario() { return idUsuario; }
+    public long getIdUsuario() { return idUsuario; }
 
-    public void setIdUsuario(Usuario idUsuario) { this.idUsuario = idUsuario; }
+    public void setIdUsuario(long idUsuario) { this.idUsuario = idUsuario; }
 
-    public Livro getIdLivro() { return idLivro; }
+    public long getIdLivro() { return idLivro; }
 
-    public void setIdLivro(Livro idLivro) { this.idLivro = idLivro; }
+    public void setIdLivro(long idLivro) { this.idLivro = idLivro; }
 
     public LocalDateTime getDataEmprestimo() { return dataEmprestimo; }
 
