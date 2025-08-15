@@ -121,13 +121,48 @@ public class EmprestimoDAO extends BaseDAO implements DAO<Emprestimo> {
         }
     }
 
+    public void listarEmprestimosIdUsuario(Emprestimo emprestimo) {
+        List<Emprestimo> emprestimos = new ArrayList<>();
+        String sql = "SELECT * FROM emprestimo WHERE idUsuario = ?";
+
+        try(Connection con = con()) {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setLong(1, emprestimo.getIdUsuario());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                while (rs.next()) {
+                    Emprestimo emprestimo2 = new Emprestimo();
+                    setEmprestimo(emprestimo2, rs);
+                    emprestimos.add(emprestimo2);
+                }
+                for(Emprestimo emprestimo2 : emprestimos) {
+                    System.out.println(
+                            "ID: " + emprestimo2.getIdEmprestimo() + " | IdUsuario: " + emprestimo2.getIdUsuario() +
+                                    " | IdLivro: " + emprestimo2.getIdLivro() + " | DataEmprestimo: " + emprestimo2.getDataEmprestimo() +
+                                    " | DataPrevistaDevolução: " + emprestimo2.getDataDevolucao() + " | DataEfetivaDevolucao: " + emprestimo2.getDataEfetivaDevolucao()
+                    );
+                }
+            }
+            System.out.println("Usuario não possui emprestimos");
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar Emprestimos " + e.getMessage());
+        }
+    }
+
     private void setEmprestimo(Emprestimo emprestimo, ResultSet rs) throws SQLException {
         emprestimo.setIdEmprestimo(rs.getLong("idEmprestimo"));
         emprestimo.setIdUsuario(rs.getLong("idEmprestimo"));
         emprestimo.setIdLivro(rs.getLong("idLivro"));
         emprestimo.setDataEmprestimo(rs.getTimestamp("dataEmprestimo").toLocalDateTime());
         emprestimo.setDataDevolucao(rs.getTimestamp("dataPrevistaDevolucao").toLocalDateTime());
-        emprestimo.setDataEfetivaDevolucao(rs.getTimestamp("dataEfetivaDevolucao").toLocalDateTime());
+        setDataEfetivaDevolucao(emprestimo,rs);
     }
+    private void setDataEfetivaDevolucao(Emprestimo emprestimo, ResultSet rs) throws SQLException {
+        Timestamp ts = rs.getTimestamp("dataEfetivaDevolucao");
+        if(ts != null) {
+            emprestimo.setDataEfetivaDevolucao(rs.getTimestamp("dataEfetivaDevolucao").toLocalDateTime());
+        }
+    }
+
 
 }

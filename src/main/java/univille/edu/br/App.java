@@ -116,6 +116,12 @@ public class App {
                     emprestimo4.setIdEmprestimo(sc.nextLong());
                     emprestimoDAO.excluir(emprestimo4);
                     break;
+                case "emprestimo list user id":
+                    Emprestimo emprestimo5 = new Emprestimo();
+                    System.out.print("ID Usuario: ");
+                    emprestimo5.setIdUsuario(sc.nextLong());
+                    emprestimoDAO.listarEmprestimosIdUsuario(emprestimo5);
+
 
                 case "exit":
                     x = false;
